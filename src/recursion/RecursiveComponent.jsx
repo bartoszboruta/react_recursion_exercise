@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 export default class RecursiveComponent extends Component {
 
-	// write recursive method here
+  getComponents(components) {
+    if (!components.length) {
+      return;
+    }
+
+    return components[0](this.getComponents(_.tail(components)));
+  };
 
   render() {
     return (
       <div>
-        {/* invoke recursive method here */}
+          {this.getComponents(this.props.components)}
       </div>
     );
   }
