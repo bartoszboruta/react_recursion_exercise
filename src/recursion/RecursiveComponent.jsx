@@ -7,9 +7,9 @@ export default class RecursiveComponent extends Component {
       return null;
     }
 
-    const Cmp = components[0];
+    const Container = components[0];
 
-    return <Cmp children={this.getComponents(components.slice(1))}/>
+    return <Container children={this.getComponents(components.slice(1))}/>
   };
 
   render() {
