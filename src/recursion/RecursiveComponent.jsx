@@ -2,12 +2,22 @@ import React, { Component } from 'react';
 
 export default class RecursiveComponent extends Component {
 
-	// write recursive method here
+  getComponents(components) {
+    if (!components.length) {
+      return null;
+    }
+
+    const Container = components[0];
+
+    return <Container>
+      {this.getComponents(components.slice(1))}
+    </Container>
+  };
 
   render() {
     return (
       <div>
-        {/* invoke recursive method here */}
+        {this.getComponents(this.props.components)}
       </div>
     );
   }
